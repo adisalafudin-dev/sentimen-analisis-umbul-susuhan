@@ -20,10 +20,8 @@ INPUT_FILE = 'data.csv'
 OUTPUT_FILE = 'processed_data.csv'
 
 def labeling(stars):
-    if stars >= 4:
+    if stars >= 3.5:
         return 'positive'
-    elif stars == 3:
-        return 'neutral'
     else:
         return 'negative'
 
@@ -74,6 +72,7 @@ def main():
     
     df_final['text'] = df_final['text'].apply(stemming)
     
+    print(df_final.isna().sum())
     
     df_final.to_csv(OUTPUT_FILE, index=False, encoding="utf-8-sig")
     
